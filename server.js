@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const logger = require('morgan')
 const passport = require('passport')
+const cors = require('cors')
 
 const PORT = 8000;
 
@@ -10,6 +11,7 @@ app.use(logger('dev')) // считывание и вывод запроса в �
 app.use(express.urlencoded())  // считывание данных запроса формата urlencoded
 app.use(express.json()) // считывание данных запроса формата json
 app.use(passport.initialize())
+app.use(cors())
 
 app.use(require('./app/auth/routes'))
 app.use(require('./app/posts/routes'))
