@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  instagram_db:
+    container_name: instagram_db
+    # на каких портах будет использоваться
+    ports: 
+      - 5432:5432 # обычно используют
+    environment: 
+      - POSTGRES_PASSWORD=root # пароль для базы данных
+      - POSTGRES_USER=admin # создание пользователя admin при создании базы
+    image: postgres:15.3-alpine  # установка базы данных с docker hub
