@@ -3,12 +3,17 @@ const User = require('../auth/models/User')
 
 const subscribeUser = async(req, res) =>{
     try {
-        await Subscription.create({
-            subscriber_id: req.user.id,
-            target_id: req.params.id,
-        });
-        res.status(200).send('Подписка прошла успешно')
+        if(req.user.id != req.params.id){
+            await Subscription.create({
+                subscriber_id: req.user.id,
+                target_id: req.params.id,
+            });
+            res.status(200).send('Подписка прошла успешно')
+        }else{
+            res.status(400).send('Вы не можете подписаться на самого себя')
+        }
     } catch (error) {
+        console.log(error);
         res.status(500).send(error)
     }
 }

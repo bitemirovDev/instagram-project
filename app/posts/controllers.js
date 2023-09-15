@@ -74,6 +74,7 @@ const getPostsByUsername = async(req, res) =>{
         const posts = await Post.findAll({
             include: [{
                 model: User,
+                as: "user",
                 where: { 
                     user_name: req.params.username 
                 },
@@ -83,7 +84,8 @@ const getPostsByUsername = async(req, res) =>{
         res.status(200).send(posts)
 
     } catch (error) {
-        res.status(500).send(error)
+        console.log(error);
+        // res.status(500).send(error)
     }
     
 }

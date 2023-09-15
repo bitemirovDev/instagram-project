@@ -16,12 +16,12 @@ const addLike = async(req, res) =>{
             })
 
             if(post){
-                await Like.create({
+                const like = await Like.create({
                     user_id: req.user.id,
                     entity_type: entity_type,
                     entity_id: entity_id,
                 })
-                res.status(200).end()
+                res.status(200).send(like)
             }else{
                 res.status(404).send({message: "Пост не найден"})
             }
@@ -33,12 +33,12 @@ const addLike = async(req, res) =>{
             })
 
             if(comment){
-                await Like.create({
+                const like = await Like.create({
                     user_id: req.user.id,
                     entity_type: entity_type,
                     entity_id: entity_id,
                 })
-                res.status(200).end()
+                res.status(200).send(like)
             }else{
                 res.status(404).send({message: "Комментарий не найден"})
             } 
@@ -50,12 +50,12 @@ const addLike = async(req, res) =>{
             })
 
             if(story){
-                await Like.create({
+                const like = await Like.create({
                     user_id: req.user.id,
                     entity_type: entity_type,
                     entity_id: entity_id,
                 })
-                res.status(200).end()
+                res.status(200).send(like)
             }else{
                 res.status(404).send({message: "История не найдена"})
             } 
