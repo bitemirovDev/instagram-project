@@ -82,9 +82,9 @@ const getPostsByUsername = async(req, res) =>{
         })
 
         res.status(200).send(posts)
-
     } catch (error) {
         console.log(error);
+        console.log(123);
         res.status(500).send(error)
     }
     
